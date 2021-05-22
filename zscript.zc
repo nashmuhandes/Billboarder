@@ -1,0 +1,90 @@
+version "3.6"
+
+class BillboarderHandler : EventHandler
+{
+	override void WorldThingSpawned(WorldEvent e)
+	{
+		if (!e.Thing) return;
+
+		Actor mo = e.Thing;
+
+		bool isProjectile =
+		(
+			mo.bMissile ||
+			mo is "FastProjectile"
+		);
+
+		bool isFX =
+		(
+			// Doom
+			mo is "BulletPuff" ||
+
+			// Heretic
+			mo is "StaffPuff" ||
+			mo is "StaffPuff2" ||
+			mo is "GauntletPuff1" ||
+			mo is "GoldWandPuff1" ||
+			mo is "CrossbowFX4" ||
+			mo is "BlasterSmoke" ||
+			mo is "BlasterPuff" ||
+			mo is "PhoenixPuff" ||
+			mo is "Sorcerer2FXSpark" ||
+			mo is "Sorcerer2Telefade" ||
+
+			// Hexen
+			mo is "PunchPuff" ||
+			mo is "AxePuff" ||
+			mo is "HammerPuff" ||
+			mo is "FSwordFlame" ||
+			mo is "CFlameFloor" ||
+			mo is "FlamePuff" ||
+			mo is "HolyMissilePuff" ||
+			mo is "HolyPuff" ||
+			mo is "HolyTail" ||
+			mo is "MageWandSmoke" ||
+			mo is "BlastEffect" ||
+			mo is "BishopPuff" ||
+
+			// Strife
+			mo is "StrifePuff" ||
+			mo is "MaulerPuff" ||
+			mo is "PhosphorousFire" ||
+
+			// Misc
+			mo is "GlassJunk" ||
+			mo is "TeleportFog"
+		);
+
+		bool isBlood =
+		(
+			mo is "Blood"
+		);
+
+		bool isSmokeTrail =
+		(
+			mo is "RocketSmokeTrail" ||
+			mo is "GrenadeSmokeTrail" ||
+			mo is "RocketTrail"
+		);
+
+		bool isWaterSplashChunk =
+		(
+			mo is "WaterSplash" ||
+			mo is "LavaSmoke" ||
+			mo is "SludgeChunk" ||
+			mo is "BloodSplash" ||
+			mo is "SlimeChunk"
+		);
+
+		bool isExcluded =
+		(
+			mo is "RainPillar"
+		);
+
+
+		if (isProjectile || isFX || isBlood || isSmokeTrail || isWaterSplashChunk)
+		{
+			mo.bForceXYBillboard = !isExcluded;
+		}
+	}
+}
