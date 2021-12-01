@@ -44,6 +44,10 @@ class BillboarderHandler : EventHandler
 			mo is "MageWandSmoke" ||
 			mo is "BlastEffect" ||
 			mo is "BishopPuff" ||
+			mo is "FireBomb" ||
+			mo is "PoisonBag" ||
+			mo is "PoisonCloud" ||
+			mo is "FogPatchSmall" ||
 
 			// Strife
 			mo is "StrifePuff" ||
