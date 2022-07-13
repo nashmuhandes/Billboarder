@@ -4,7 +4,8 @@ class BillboarderHandler : EventHandler
 {
 	override void WorldThingSpawned(WorldEvent e)
 	{
-		if (!e.Thing) return;
+		if (!e.Thing)
+			return;
 
 		Actor mo = e.Thing;
 
