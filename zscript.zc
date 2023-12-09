@@ -57,7 +57,9 @@ class BillboarderHandler : EventHandler
 
 			// Misc
 			mo is "GlassJunk" ||
-			mo is "TeleportFog"
+			mo is "TeleportFog" ||
+			mo is "ItemFog" ||
+			mo is "PickupFlash"
 		);
 
 		bool isBlood =
